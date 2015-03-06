@@ -19,9 +19,6 @@
       "LICENSE.txt",
       "README.md"
   ],
-  "engines": {
-    "node": ">= 0.4.0"
-  },
   "keywords": [
     "vector",
     "graphic",
