@@ -4962,14 +4962,18 @@ var Raster = Item.extend({
 	_hitTestSelf: function(point) {
 		if (this._contains(point)) {
 			var that = this;
-			return new HitResult('pixel', that, {
-				offset: point.add(that._size.divide(2)).round(),
-				color: {
-					get: function() {
-						return that.getPixel(this.offset);
+			var offset = point.add(that._size.divide(2)).round();
+			var color = this.getPixel(offset);
+			if (color.getAlpha() != 0) {
+				return new HitResult('pixel', that, {
+					offset: offset,
+					color: {
+						get: function() {
+							return color;
+						}
 					}
-				}
-			});
+				});
+			}
 		}
 	},
 
